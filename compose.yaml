@@ -40,13 +40,23 @@ services:
     container_name: dev-auth-db
     image: mcr.microsoft.com/mssql/server:2022-latest
     volumes:
-      - ./data:/var/opt/dev-identity-db/mssql
-      - ./log:/var/opt/dev-identity-db/mssql/log
+      - ./data:/var/opt/dev-auth-db/mssql
+      - ./log:/var/opt/dev-auth-db/mssql/log
     ports:
       - "4501:1433"
     environment:
       SA_PASSWORD: "bb0c-9174a8935112"
       ACCEPT_EULA: "Y"
+
+  dev-azurite:
+    container_name: dev-azurite
+    image: mcr.microsoft.com/azure-storage/azurite
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    volumes:
+      - ./data:/var/opt/azurite/data
 
   redis-cache:
     container_name: redis-cache
