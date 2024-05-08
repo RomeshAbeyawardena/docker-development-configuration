@@ -1,0 +1,45 @@
+services:
+
+  dev-core-db:
+    container_name: dev-core-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "4000:1433"
+    volumes:
+      - ./data:/var/opt/dev-core-db/mssql
+      - ./log:/var/opt/dev-core-db/mssql/log
+    environment:
+      SA_PASSWORD: "888b-0325cd49c680"
+      ACCEPT_EULA: "Y"
+
+  dev-crm-db:
+    container_name: dev-crm-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "4001:1433"
+    volumes:
+      - ./data:/var/opt/dev-crm-db/mssql
+      - ./log:/var/opt/dev-crm-db/mssql/log
+    environment:
+      SA_PASSWORD: "a3623b35-7597"
+      ACCEPT_EULA: "Y"
+  
+  dev-identity-db:
+    container_name: dev-identity-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    volumes:
+      - ./data:/var/opt/dev-identity-db/mssql
+      - ./log:/var/opt/dev-identity-db/mssql/log
+    ports:
+      - "4500:1433"
+    environment:
+      SA_PASSWORD: "a3623b35-7597"
+      ACCEPT_EULA: "Y"
+
+  redis-cache:
+    container_name: redis-cache
+    image: redis
+    volumes:
+      - ./data:/var/opt/redis/data
+    ports:
+      - "8000:6379"
