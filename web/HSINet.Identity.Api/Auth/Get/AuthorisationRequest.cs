@@ -1,8 +1,9 @@
-﻿using System.Text.Json.Serialization;
+﻿using MediatR;
+using System.Text.Json.Serialization;
 
 namespace HSINet.Identity.Api.Auth.Get;
 
-public record AuthorisationRequest 
+public record AuthorisationRequest : IRequest<AuthorisationResponse>
 {
     [JsonPropertyName("response_type")]
     public string? ResponseType { get; init; }
