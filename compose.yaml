@@ -1,5 +1,11 @@
 services:
 
+  identity-server:
+    container_name: identity-server
+    image: mcr.microsoft.com/dotnet/aspnet:8.0
+    build:
+      context: ./web/HSINet.Identity.Api
+
   dev-core-db:
     container_name: dev-core-db
     image: mcr.microsoft.com/mssql/server:2022-latest
