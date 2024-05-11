@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace HSINet.Identity.Api.Token.Post;
+namespace HSINet.Identity.Api.Tokens.Post;
 
 public static class Endpoint
 {

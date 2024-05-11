@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace HSINet.Identity.Api.Token.Post;
+namespace HSINet.Identity.Api.Tokens.Post;
 
 public class Response
 {
