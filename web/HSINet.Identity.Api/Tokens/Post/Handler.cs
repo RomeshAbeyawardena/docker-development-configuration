@@ -1,6 +1,7 @@
 ﻿using HSINet.Identity.Api.AuthorisationCodes.Get;
 using HSINet.Identity.Domain;
 using HSINet.Identity.Domain.Exceptions;
+using HSINet.Shared.Transactional;
 using MediatR;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
@@ -8,9 +9,13 @@ using System.Security.Claims;
 
 namespace HSINet.Identity.Api.Tokens.Post;
 
-public class Handler(ApplicationSettings applicationSettings, IMediator mediator, TimeProvider timeProvider) 
+public class Handler(ApplicationSettings applicationSettings, IMediator mediator, TimeProvider timeProvider,
+    IUnitOfWorkProvider unitOfWorkProvider)
     : IRequestHandler<Request, Response>
 {
+    private readonly IUnitOfWork unitOfWork = unitOfWorkProvider.GetUnitOfWork("Identity.Api")
+        ?? throw new NullReferenceException("Identity API backend not configured");
+
     private string? CreateToken(SessionData sessionData)
     {
         var key = new SymmetricSecurityKey(
@@ -48,9 +53,17 @@ public class Handler(ApplicationSettings applicationSettings, IMediator mediator
                 Reference = request.ClientId 
             }, cancellationToken) ?? throw new NullReferenceException("Client not found");
 
-        if(!string.IsNullOrWhiteSpace(client.Secret) && client.Secret != request.ClientSecret)
+        ///the plaintext version of the client secret is not stored on the server only the hashed signature
+        ///it is only known by the client.
+        if (!string.IsNullOrWhiteSpace(client.Secret))
         {
-            throw new UnauthorizedAccessException("Client secret is invalid");
+            var secret = client.HashClientSecret(request.ClientSecret 
+                ?? throw new NullReferenceException("Client secret is required"));
+
+            if (client.Secret != secret)
+            {
+                throw new UnauthorizedAccessException("Client secret is invalid");
+            }
         }
 
         var utcNow = timeProvider.GetUtcNow();
@@ -71,7 +84,7 @@ public class Handler(ApplicationSettings applicationSettings, IMediator mediator
                 Authorisation = authorisation,
                 Client = client
             }),
-            RefreshToken = ""
+            RefreshToken = Guid.NewGuid().ToString("X")
         };
 
         client.ClientAccessTokens.Add(new Domain.Clients.ClientAccessToken
@@ -80,6 +93,8 @@ public class Handler(ApplicationSettings applicationSettings, IMediator mediator
         });
 
         utcNow = timeProvider.GetUtcNow();
+
+        await unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new Response
         {
