@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace HSINet.Identity.Api.AccessToken.Post;
+namespace HSINet.Identity.Api.AccessTokens.Post;
 
 public class Handler : IRequestHandler<Command, Domain.AccessTokens.AccessToken>
 {
