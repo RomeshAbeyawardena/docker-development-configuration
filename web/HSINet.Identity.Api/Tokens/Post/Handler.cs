@@ -89,7 +89,7 @@ public class Handler(ApplicationSettings applicationSettings, IMediator mediator
 
         client.ClientAccessTokens.Add(new Domain.Clients.ClientAccessToken
         {
-            AccessToken = accessToken
+            AccessToken = accessToken,
         });
 
         utcNow = timeProvider.GetUtcNow();

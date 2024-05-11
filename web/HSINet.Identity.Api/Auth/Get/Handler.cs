@@ -47,11 +47,24 @@ public class Handler(IMediator mediator, TimeProvider timeProvider, IUnitOfWorkP
             throw new InvalidCastException("Response type is not valid");
         }
 
-        var auth = await mediator.Send(new Command { 
-            Entity = new Authorisation
+        var auth = new Authorisation
+        {
+            Code = Guid.NewGuid().ToString("X"),
+            Expires = utcNow.AddSeconds(3600),
+            ValidFrom = utcNow,
+        };
+
+        foreach(var permission in client.ClientPermissions
+            .Where(cp => request.Scopes.Contains(cp.Permission?.Name))
+            .Select(cp => cp.Permission))
+        {
+            auth.Permissions.Add(new AuthorisationPermission
             {
-                Code = Guid.NewGuid().ToString("X")
-            }
+                PermissionId = permission.Id
+            });
+        }
+        auth = await mediator.Send(new Command { 
+            Entity = auth
         }, cancellationToken);
 
         var context = httpContextAccessor.HttpContext;
