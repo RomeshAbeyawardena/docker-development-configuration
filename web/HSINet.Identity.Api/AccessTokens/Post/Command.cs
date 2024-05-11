@@ -1,10 +1,19 @@
-﻿using MediatR;
+﻿using HSINet.Shared;
+using HSINet.Shared.Transactional;
+using MediatR;
 
 namespace HSINet.Identity.Api.AccessTokens.Post;
 
-public class Command : IRequest<Domain.AccessTokens.AccessToken>
+public class Command : IDbCommand<Domain.AccessTokens.AccessToken>, 
+    IRequest<Domain.AccessTokens.AccessToken>
 {
     public string? AuthorisationCode { get; init; }
     public string? ClientReference {get; init; }
     public string? ClientSecret { get; init; }
+    public Domain.AccessTokens.AccessToken Entity  => new ()
+    {
+
+    }
+    public UpsertOptions? Options { get; init; }
+    public bool CommitChanges { get; init; }
 }

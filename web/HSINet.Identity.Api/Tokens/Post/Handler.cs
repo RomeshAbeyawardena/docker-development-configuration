@@ -82,7 +82,8 @@ public class Handler(ApplicationSettings applicationSettings, IMediator mediator
             Key = CreateToken(new SessionData
             {
                 Authorisation = authorisation,
-                Client = client
+                Client = client,
+                Scopes = authorisation.Permissions.Select(s => s.Permission!.Name)
             }),
             RefreshToken = Guid.NewGuid().ToString("X")
         };

@@ -6,5 +6,5 @@ public class AuthorisationPermission
     public Guid AuthorisationId { get; set; }
     public Guid PermissionId { get; set; }
     public Authorisation? Authorisation { get; set; }
-    public Permissions.Permission? Permissions { get; set; }
+    public Permissions.Permission? Permission { get; set; }
 }

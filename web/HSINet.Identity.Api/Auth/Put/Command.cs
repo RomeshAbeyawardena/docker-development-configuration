@@ -8,6 +8,6 @@ namespace HSINet.Identity.Api.Auth.Put;
 public record Command : IRequest<Authorisation>, IDbCommand<Authorisation>
 {
     public required Authorisation Entity { get; init; }
-    public UpsertOptions? Options { get; }
-    public bool CommitChanges { get; }
+    public UpsertOptions? Options { get; init; }
+    public bool CommitChanges { get; init; }
 }
