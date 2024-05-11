@@ -3,6 +3,7 @@
 public class Client
 {
     public Guid Id { get; set; }
+    public required string Name { get; set; }
     public string? Secret { get; set; }
     public ICollection<ClientPermission> ClientPermissions { get; set; } = [];
     public ICollection<ClientAccessToken> ClientAccessTokens { get; set; } = [];

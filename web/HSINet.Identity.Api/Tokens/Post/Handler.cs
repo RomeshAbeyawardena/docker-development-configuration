@@ -35,8 +35,9 @@ public class Handler(ApplicationSettings applicationSettings, IMediator mediator
             IssuedAt = localNow.DateTime,
             NotBefore = localNow.DateTime,
             Expires = localNow.DateTime.AddMinutes(applicationSettings.SessionValidityPeriodInMinutes),
-            Subject = new ClaimsIdentity(new List<Claim> { 
-                //new Claim("Session-Id", sessionData.SessionId.ToString()) 
+            Subject = new ClaimsIdentity(new List<Claim> {
+                new("clientId", sessionData.Client!.Name),
+                new("scopes", string.Join(",", sessionData.Scopes))
             }),
             SigningCredentials = new SigningCredentials(key,
                 SecurityAlgorithms.HmacSha512),
