@@ -1,6 +1,4 @@
-﻿using HSINet.Shared.Hashing;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
 
 namespace HSINet.Identity.Api.CSRF.Post;
 

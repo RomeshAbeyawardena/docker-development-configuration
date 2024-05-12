@@ -65,7 +65,7 @@ public class Handler(IMediator mediator, TimeProvider timeProvider, IUnitOfWorkP
 
             auth.Permissions.Add(new AuthorisationPermission
             {
-                PermissionId = permission.Id
+                PermissionId = permission.Id.GetValueOrDefault()
             });
         }
         auth = await mediator.Send(new Command { 

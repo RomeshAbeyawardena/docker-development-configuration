@@ -1,5 +1,12 @@
-﻿namespace HSINet.Identity.Api.CSRF.Get;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
 
-public class Endpoint
+namespace HSINet.Identity.Api.CSRF.Get;
+
+public static class Endpoint
 {
+    public static async Task<IResult> GetV1()
+    {
+        await Task.CompletedTask;
+        return Results.Ok();
+    }
 }
