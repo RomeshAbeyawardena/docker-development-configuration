@@ -58,6 +58,11 @@ public class Handler(IMediator mediator, TimeProvider timeProvider, IUnitOfWorkP
             .Where(cp => request.Scopes.Contains(cp.Permission?.Name))
             .Select(cp => cp.Permission))
         {
+            if(permission == null)
+            {
+                throw new NullReferenceException($"Permission not found");
+            }
+
             auth.Permissions.Add(new AuthorisationPermission
             {
                 PermissionId = permission.Id
