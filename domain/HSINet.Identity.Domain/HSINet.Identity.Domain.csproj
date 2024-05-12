@@ -5,5 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
+  <ItemGroup>
+    <PackageReference Include="HSINet.Shared" Version="2024.5.2.40" />
+  </ItemGroup>
 </Project>

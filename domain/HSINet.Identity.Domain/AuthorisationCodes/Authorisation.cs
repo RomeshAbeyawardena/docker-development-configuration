@@ -1,8 +1,10 @@
-﻿namespace HSINet.Identity.Domain.AuthorisationCodes;
+﻿using HSINet.Shared.EntityAttributes;
 
-public class Authorisation
+namespace HSINet.Identity.Domain.AuthorisationCodes;
+
+public class Authorisation : IIdentity
 {
-    public Guid Id { get; set; }
+    public Guid? Id { get; set; }
     public string? Code { get; set; }
     public DateTimeOffset ValidFrom { get; set; }
     public DateTimeOffset Expires { get; set; }

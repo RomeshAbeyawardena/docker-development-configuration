@@ -1,8 +1,10 @@
-﻿namespace HSINet.Identity.Domain.Clients;
+﻿using HSINet.Shared.EntityAttributes;
 
-public class ClientPermission
+namespace HSINet.Identity.Domain.Clients;
+
+public class ClientPermission : IIdentity
 {
-    public Guid Id { get; set; }
+    public Guid? Id { get; set; }
     public Guid ClientId { get; set; }
     public Guid PermissionId { get; set; }
     public Client? Client { get; set; }

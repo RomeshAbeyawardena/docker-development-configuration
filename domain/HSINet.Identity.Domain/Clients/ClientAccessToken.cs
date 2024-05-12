@@ -1,7 +1,10 @@
-﻿namespace HSINet.Identity.Domain.Clients;
+﻿using HSINet.Shared.EntityAttributes;
 
-public class ClientAccessToken
+namespace HSINet.Identity.Domain.Clients;
+
+public class ClientAccessToken : IIdentity
 {
+    public Guid? Id { get; set; }
     public Guid ClientId { get; set; }
     public Guid AccessTokenId { get; set; }
     public virtual Client? Client { get; set; }

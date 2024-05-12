@@ -1,8 +1,10 @@
-﻿namespace HSINet.Identity.Domain.Sessions;
+﻿using HSINet.Shared.EntityAttributes;
 
-public class Session
+namespace HSINet.Identity.Domain.Sessions;
+
+public class Session : IIdentity
 {
-    public Guid Id { get; set; }
+    public Guid? Id { get; set; }
     public Guid AuthorisationId { get; set; }
     public Guid ClientId { get; set; }
     public Guid? CSRFTokenId { get; set; }

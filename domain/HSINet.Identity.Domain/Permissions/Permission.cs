@@ -1,7 +1,9 @@
-﻿namespace HSINet.Identity.Domain.Permissions;
+﻿using HSINet.Shared.EntityAttributes;
 
-public class Permission
+namespace HSINet.Identity.Domain.Permissions;
+
+public class Permission : IIdentity
 {
-    public Guid Id { get; set; }
+    public Guid? Id { get; set; }
     public required string Name { get; set; }
 }

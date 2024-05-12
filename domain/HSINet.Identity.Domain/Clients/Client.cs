@@ -1,8 +1,10 @@
-﻿namespace HSINet.Identity.Domain.Clients;
+﻿using HSINet.Shared.EntityAttributes;
 
-public class Client
+namespace HSINet.Identity.Domain.Clients;
+
+public class Client : IIdentity
 {
-    public Guid Id { get; set; }
+    public Guid? Id { get; set; }
     public required string Name { get; set; }
     public string? Secret { get; set; }
     public ICollection<ClientPermission> ClientPermissions { get; set; } = [];
@@ -15,6 +17,6 @@ public class Client
 
     public bool HasPermission(string permission)
     {
-        return false;
+        return ClientPermissions.Any(cp => cp.Permission?.Name == permission);
     }
 }
