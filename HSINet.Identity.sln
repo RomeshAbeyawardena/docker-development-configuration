@@ -5,27 +5,29 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "domain", "domain", "{2AB982F5-0DB1-46F9-B44F-2CD71F38C0F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSINet.Identity.Domain", "domain\HSINet.Identity.Domain\HSINet.Identity.Domain.csproj", "{4E646518-B532-4860-981D-AA146B3BAF65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HSINet.Identity.Domain", "domain\HSINet.Identity.Domain\HSINet.Identity.Domain.csproj", "{4E646518-B532-4860-981D-AA146B3BAF65}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{52981816-1C8A-414C-8503-CDEECECF319D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSINet.Identity.Infrastructure", "infrastructure\HSINet.Identity.Infrastructure\HSINet.Identity.Infrastructure.csproj", "{1F48F0AA-D7F7-4FF4-966C-D946D4A78056}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HSINet.Identity.Infrastructure", "infrastructure\HSINet.Identity.Infrastructure\HSINet.Identity.Infrastructure.csproj", "{1F48F0AA-D7F7-4FF4-966C-D946D4A78056}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{965A9E47-C355-4EAC-A8C0-9EE67B8399BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSINet.Identity.Web", "web\HSINet.Identity.Web\HSINet.Identity.Web.csproj", "{1E7C6CAC-DC3E-4C8E-BC9B-098F0A9AD2D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HSINet.Identity.Web", "web\HSINet.Identity.Web\HSINet.Identity.Web.csproj", "{1E7C6CAC-DC3E-4C8E-BC9B-098F0A9AD2D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSINet.Identity.Api", "web\HSINet.Identity.Api\HSINet.Identity.Api.csproj", "{739E8EB1-810B-4CE3-8669-2FC430C6217F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HSINet.Identity.Api", "web\HSINet.Identity.Api\HSINet.Identity.Api.csproj", "{739E8EB1-810B-4CE3-8669-2FC430C6217F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSINet.Identity.Infrastructure.Migrations", "infrastructure\HSINet.Identity.Infrastructure.Migrations\HSINet.Identity.Infrastructure.Migrations.csproj", "{014AF764-419B-4035-A5E1-B910DED1543F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HSINet.Identity.Infrastructure.Migrations", "infrastructure\HSINet.Identity.Infrastructure.Migrations\HSINet.Identity.Infrastructure.Migrations.csproj", "{014AF764-419B-4035-A5E1-B910DED1543F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{11C3F46B-F409-4A04-BE1F-01CFEB28A6CD}"
+	ProjectSection(SolutionItems) = preProject
+		docker = docker
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4E646518-B532-4860-981D-AA146B3BAF65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -49,11 +51,17 @@ Global
 		{014AF764-419B-4035-A5E1-B910DED1543F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{014AF764-419B-4035-A5E1-B910DED1543F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4E646518-B532-4860-981D-AA146B3BAF65} = {2AB982F5-0DB1-46F9-B44F-2CD71F38C0F6}
 		{1F48F0AA-D7F7-4FF4-966C-D946D4A78056} = {52981816-1C8A-414C-8503-CDEECECF319D}
 		{1E7C6CAC-DC3E-4C8E-BC9B-098F0A9AD2D8} = {965A9E47-C355-4EAC-A8C0-9EE67B8399BD}
 		{739E8EB1-810B-4CE3-8669-2FC430C6217F} = {965A9E47-C355-4EAC-A8C0-9EE67B8399BD}
 		{014AF764-419B-4035-A5E1-B910DED1543F} = {52981816-1C8A-414C-8503-CDEECECF319D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00DC55B8-5288-41EC-B675-A636F48EBE4F}
 	EndGlobalSection
 EndGlobal

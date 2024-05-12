@@ -10,10 +10,7 @@ public class Command : IDbCommand<Domain.AccessTokens.AccessToken>,
     public string? AuthorisationCode { get; init; }
     public string? ClientReference {get; init; }
     public string? ClientSecret { get; init; }
-    public Domain.AccessTokens.AccessToken Entity  => new ()
-    {
-
-    }
+    public required Domain.AccessTokens.AccessToken Entity { get; set; }
     public UpsertOptions? Options { get; init; }
     public bool CommitChanges { get; init; }
 }

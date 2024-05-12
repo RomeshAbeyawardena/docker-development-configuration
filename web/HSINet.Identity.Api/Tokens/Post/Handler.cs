@@ -16,7 +16,7 @@ public class Handler(ApplicationSettings applicationSettings, IMediator mediator
     private readonly IUnitOfWork unitOfWork = unitOfWorkProvider.GetUnitOfWork("Identity.Api")
         ?? throw new NullReferenceException("Identity API backend not configured");
 
-    private string? CreateToken(SessionData sessionData)
+    private string CreateToken(SessionData sessionData)
     {
         var key = new SymmetricSecurityKey(
         Convert.FromBase64String(applicationSettings.TokenKey

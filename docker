@@ -1,0 +1,16 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+WORKDIR /web
+
+COPY . ./
+RUN dotnet restore
+RUN dotnet publish -c Release -o out
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /web
+COPY --from=build-env /web/api/out .
+ENTRYPOINT ["dotnet", "HSINet.Identity.Api.dll"]
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /web
+COPY --from=build-env /web/out .
+ENTRYPOINT ["dotnet", "HSINet.Identity.Web.dll"]
