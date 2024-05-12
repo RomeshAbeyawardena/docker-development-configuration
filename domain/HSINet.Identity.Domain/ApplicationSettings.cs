@@ -7,4 +7,5 @@ public class ApplicationSettings
     public IEnumerable<string> Issuers { get; set; } = [];
     public IEnumerable<string> Audiences { get; set; } = [];
     public long SessionValidityPeriodInMinutes { get; set; }
+    public string Secret { get; set; }
 }
