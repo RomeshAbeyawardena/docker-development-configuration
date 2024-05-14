@@ -1,6 +1,6 @@
 ﻿namespace HSINet.Identity.Infrastructure;
 
-public class Class1
+public class IdentityDbContext
 {
 
 }
